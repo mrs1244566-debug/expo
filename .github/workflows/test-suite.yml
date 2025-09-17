@@ -25,85 +25,85 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  #  ios-build:
-  #    runs-on: macos-15
-  #    steps:
-  #      - name: 👀 Checkout
-  #        uses: actions/checkout@v5
-  #        with:
-  #          submodules: true
-  #      - name: 🏗️ Setup Bun
-  #        uses: oven-sh/setup-bun@v2
-  #        with:
-  #          # Version `1.x` fails due to https://github.com/oven-sh/setup-bun/issues/37
-  #          # TODO(cedric): swap `latest` back once the issue is resolved
-  #          bun-version: latest
-  #      - name: 🔨 Switch to Xcode 16.4
-  #        run: sudo xcode-select --switch /Applications/Xcode_16.4.app
-  #      - name: 🍺 Install required tools
-  #        run: |
-  #          brew install watchman || true
-  #      - name: ➕ Add `bin` to GITHUB_PATH
-  #        run: echo "$(pwd)/bin" >> $GITHUB_PATH
-  #      - name: 💎 Setup Ruby and install gems
-  #        uses: ruby/setup-ruby@v1
-  #        with:
-  #          bundler-cache: true
-  #          ruby-version: 3.2.2
-  #      - name: ♻️ Restore caches
-  #        uses: ./.github/actions/expo-caches
-  #        id: expo-caches
-  #        with:
-  #          yarn-workspace: 'true'
-  #          yarn-tools: 'true'
-  #          bare-expo-pods: 'true'
-  #      - name: 🧶 Install node modules in root dir
-  #        if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
-  #        run: yarn install --frozen-lockfile
-  #      - name: 🕵️ Debug CocoaPods lockfiles
-  #        run: git diff Podfile.lock Pods/Manifest.lock
-  #        working-directory: apps/bare-expo/ios
-  #        continue-on-error: true
-  #      - name: ⚛️ Display React Native config
-  #        run: yarn expo-modules-autolinking react-native-config --platform ios
-  #        working-directory: apps/bare-expo
-  #      - name: 🌳 Display pod environment
-  #        run: pod env
-  #        working-directory: apps/bare-expo/ios
-  #      - name: 🥥 Install pods in apps/bare-expo/ios
-  #        if: steps.expo-caches.outputs.ios-pods-hit != 'true'
-  #        run: pod install
-  #        env:
-  #          RCT_USE_PREBUILT_RNCORE: 1
-  #          RCT_USE_RN_DEP: 1
-  #        working-directory: apps/bare-expo/ios
-  #      - name: 🏗️ Build iOS project (bare-expo)
-  #        run: ./scripts/start-ios-e2e-test.ts --build
-  #        working-directory: apps/bare-expo
-  #        timeout-minutes: 55
-  #        env:
-  #          EXPO_DEBUG: 1
-  #          NODE_ENV: production
-  #      - name: 📸 Upload builds
-  #        uses: actions/upload-artifact@v4
-  #        with:
-  #          name: bare-expo-ios-builds
-  #          path: apps/bare-expo/ios/build/BareExpo.app
-  #      - name: 🔔 Notify on Slack
-  #        uses: 8398a7/action-slack@v3
-  #        if: failure() && (github.event.ref == 'refs/heads/main' || startsWith(github.event.ref, 'refs/heads/sdk-'))
-  #        env:
-  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_ios }}
-  #        with:
-  #          channel: '#expo-ios'
-  #          status: ${{ job.status }}
-  #          fields: job,message,ref,eventName,author,took
-  #          author_name: Test Suite e2e (iOS)
+  ios-build:
+    runs-on: macos-26
+    steps:
+      - name: 👀 Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: true
+      - name: 🏗️ Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          # Version `1.x` fails due to https://github.com/oven-sh/setup-bun/issues/37
+          # TODO(cedric): swap `latest` back once the issue is resolved
+          bun-version: latest
+      #  - name: 🔨 Switch to Xcode 16.4
+      #    run: sudo xcode-select --switch /Applications/Xcode_16.4.app
+      - name: 🍺 Install required tools
+        run: |
+          brew install watchman || true
+      - name: ➕ Add `bin` to GITHUB_PATH
+        run: echo "$(pwd)/bin" >> $GITHUB_PATH
+      - name: 💎 Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 3.2.2
+      - name: ♻️ Restore caches
+        uses: ./.github/actions/expo-caches
+        id: expo-caches
+        with:
+          yarn-workspace: 'true'
+          yarn-tools: 'true'
+          bare-expo-pods: 'true'
+      - name: 🧶 Install node modules in root dir
+        if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
+        run: yarn install --frozen-lockfile
+      - name: 🕵️ Debug CocoaPods lockfiles
+        run: git diff Podfile.lock Pods/Manifest.lock
+        working-directory: apps/bare-expo/ios
+        continue-on-error: true
+      - name: ⚛️ Display React Native config
+        run: yarn expo-modules-autolinking react-native-config --platform ios
+        working-directory: apps/bare-expo
+      - name: 🌳 Display pod environment
+        run: pod env
+        working-directory: apps/bare-expo/ios
+      - name: 🥥 Install pods in apps/bare-expo/ios
+        if: steps.expo-caches.outputs.ios-pods-hit != 'true'
+        run: pod install
+        env:
+          RCT_USE_PREBUILT_RNCORE: 1
+          RCT_USE_RN_DEP: 1
+        working-directory: apps/bare-expo/ios
+      - name: 🏗️ Build iOS project (bare-expo)
+        run: ./scripts/start-ios-e2e-test.ts --build
+        working-directory: apps/bare-expo
+        timeout-minutes: 55
+        env:
+          EXPO_DEBUG: 1
+          NODE_ENV: production
+      - name: 📸 Upload builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: bare-expo-ios-builds
+          path: apps/bare-expo/ios/build/BareExpo.app
+      - name: 🔔 Notify on Slack
+        uses: 8398a7/action-slack@v3
+        if: failure() && (github.event.ref == 'refs/heads/main' || startsWith(github.event.ref, 'refs/heads/sdk-'))
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_ios }}
+        with:
+          channel: '#expo-ios'
+          status: ${{ job.status }}
+          fields: job,message,ref,eventName,author,took
+          author_name: Test Suite e2e (iOS)
 
   ios-test-e2e:
-    # needs: ios-build
-    runs-on: macos-15
+    needs: ios-build
+    runs-on: macos-26
     steps:
       - name: 👀 Checkout
         uses: actions/checkout@v5
@@ -122,8 +122,8 @@ jobs:
         with:
           name: bare-expo-ios-builds
           path: apps/bare-expo/ios/build/BareExpo.app
-          run-id: 17638805817
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      #          run-id: 17638805817
+      #          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 🍺 Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
@@ -138,10 +138,23 @@ jobs:
       - name: 🧶 Install node modules in root dir
         if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
         run: yarn install --frozen-lockfile
+      - name: 🖼️ Start image comparison server
+        run: |
+          mkdir -p ~/.maestro/tests
+          bun run e2e/image-comparison-server.ts > ~/.maestro/tests/screenshot-server-output 2>&1 &
+          echo $! > /tmp/image-server.pid
+        working-directory: apps/bare-expo
       - name: 🧪 Run e2e tests (bare-expo)
         run: ./scripts/start-ios-e2e-test.ts --test
         working-directory: apps/bare-expo
         timeout-minutes: 30
+      - name: 🛑 Stop image comparison server
+        if: always()
+        run: |
+          if [ -f /tmp/image-server.pid ]; then
+            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
+            rm -f /tmp/image-server.pid
+          fi
       - name: 📸 Store testing artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -166,75 +179,75 @@ jobs:
           job_name: 'Test Suite e2e (iOS)'
           artifact_url: ${{ steps.upload-artifacts.outputs.artifact-url }}
 
-  #  android-build:
-  #    runs-on: ubuntu-24.04
-  #    env:
-  #      ORG_GRADLE_PROJECT_reactNativeArchitectures: x86_64
-  #      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=4096m"
-  #    steps:
-  #      - name: 👀 Checkout
-  #        uses: actions/checkout@v5
-  #        with:
-  #          submodules: true
-  #      - name: 🧹 Cleanup GitHub Linux runner disk space
-  #        uses: ./.github/actions/cleanup-linux-disk-space
-  #      - name: 🏗️ Setup Bun
-  #        uses: oven-sh/setup-bun@v2
-  #        with:
-  #          # Version `1.x` fails due to https://github.com/oven-sh/setup-bun/issues/37
-  #          # TODO(cedric): swap `latest` back once the issue is resolved
-  #          bun-version: latest
-  #      - name: 🔨 Use JDK 17
-  #        uses: actions/setup-java@v4
-  #        with:
-  #          distribution: 'temurin'
-  #          java-version: '17'
-  #      - name: ➕ Add `bin` to GITHUB_PATH
-  #        run: echo "$(pwd)/bin" >> $GITHUB_PATH
-  #      - name: ♻️ Restore caches
-  #        uses: ./.github/actions/expo-caches
-  #        id: expo-caches
-  #        with:
-  #          gradle: 'true'
-  #          yarn-workspace: 'true'
-  #          yarn-tools: 'true'
-  #          react-native-gradle-downloads: 'true'
-  #      - name: 🧶 Install workspace node modules
-  #        if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
-  #        run: yarn install --frozen-lockfile
-  #      - name: ⚛️ Display React Native config
-  #        run: yarn expo-modules-autolinking react-native-config --platform android
-  #        working-directory: apps/bare-expo
-  #      - name: 🏗️ Gradle prebuild for Android project (workaround to fix build error)
-  #        run: ./gradlew preBuild
-  #        working-directory: apps/bare-expo/android
-  #      - name: 🏗️ Build Android project (bare-expo)
-  #        run: ./scripts/start-android-e2e-test.ts --build
-  #        working-directory: apps/bare-expo
-  #        timeout-minutes: 35
-  #        env:
-  #          EXPO_DEBUG: 1
-  #          NODE_ENV: production
-  #      - name: 📸 Upload builds
-  #        uses: actions/upload-artifact@v4
-  #        with:
-  #          name: bare-expo-android-builds
-  #          path: apps/bare-expo/android/app/build/outputs/apk
-  #      - name: 🔔 Notify on Slack
-  #        uses: 8398a7/action-slack@v3
-  #        if: failure() && (github.event.ref == 'refs/heads/main' || startsWith(github.event.ref, 'refs/heads/sdk-'))
-  #        env:
-  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_android }}
-  #          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-  #        with:
-  #          channel: '#expo-android'
-  #          status: ${{ job.status }}
-  #          fields: job,message,ref,eventName,author,took
-  #          author_name: Test Suite e2e (Android)
+  android-build:
+    runs-on: ubuntu-24.04
+    env:
+      ORG_GRADLE_PROJECT_reactNativeArchitectures: x86_64
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=4096m"
+    steps:
+      - name: 👀 Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: true
+      - name: 🧹 Cleanup GitHub Linux runner disk space
+        uses: ./.github/actions/cleanup-linux-disk-space
+      - name: 🏗️ Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          # Version `1.x` fails due to https://github.com/oven-sh/setup-bun/issues/37
+          # TODO(cedric): swap `latest` back once the issue is resolved
+          bun-version: latest
+      - name: 🔨 Use JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: ➕ Add `bin` to GITHUB_PATH
+        run: echo "$(pwd)/bin" >> $GITHUB_PATH
+      - name: ♻️ Restore caches
+        uses: ./.github/actions/expo-caches
+        id: expo-caches
+        with:
+          gradle: 'true'
+          yarn-workspace: 'true'
+          yarn-tools: 'true'
+          react-native-gradle-downloads: 'true'
+      - name: 🧶 Install workspace node modules
+        if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
+        run: yarn install --frozen-lockfile
+      - name: ⚛️ Display React Native config
+        run: yarn expo-modules-autolinking react-native-config --platform android
+        working-directory: apps/bare-expo
+      - name: 🏗️ Gradle prebuild for Android project (workaround to fix build error)
+        run: ./gradlew preBuild
+        working-directory: apps/bare-expo/android
+      - name: 🏗️ Build Android project (bare-expo)
+        run: ./scripts/start-android-e2e-test.ts --build
+        working-directory: apps/bare-expo
+        timeout-minutes: 35
+        env:
+          EXPO_DEBUG: 1
+          NODE_ENV: production
+      - name: 📸 Upload builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: bare-expo-android-builds
+          path: apps/bare-expo/android/app/build/outputs/apk
+      - name: 🔔 Notify on Slack
+        uses: 8398a7/action-slack@v3
+        if: failure() && (github.event.ref == 'refs/heads/main' || startsWith(github.event.ref, 'refs/heads/sdk-'))
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_android }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        with:
+          channel: '#expo-android'
+          status: ${{ job.status }}
+          fields: job,message,ref,eventName,author,took
+          author_name: Test Suite e2e (Android)
 
   android-test-e2e:
-    # needs: android-build
+    needs: android-build
     runs-on: ubuntu-24.04
     strategy:
       matrix:
@@ -253,8 +266,8 @@ jobs:
         with:
           name: bare-expo-android-builds
           path: apps/bare-expo/android/app/build/outputs/apk
-          run-id: 17638805817
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          #          run-id: 17638805817
+      #          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 🍺 Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
@@ -267,6 +280,12 @@ jobs:
       - name: 🧶 Install node modules in root dir
         if: steps.expo-caches.outputs.yarn-workspace-hit != 'true'
         run: yarn install --frozen-lockfile
+      - name: 🖼️ Start image comparison server
+        run: |
+          mkdir -p ~/.maestro/tests
+          bun run e2e/image-comparison-server.ts > ~/.maestro/tests/screenshot-server-output 2>&1 &
+          echo $! > /tmp/image-server.pid
+        working-directory: apps/bare-expo
       - name: 🧪 Run e2e tests (bare-expo)
         uses: ./.github/actions/use-android-emulator
         with:
@@ -274,6 +293,13 @@ jobs:
           avd-name: avd-${{ matrix.api-level }}
           script: ./scripts/start-android-e2e-test.ts --test
           working-directory: ./apps/bare-expo
+      - name: 🛑 Stop image comparison server
+        if: always()
+        run: |
+          if [ -f /tmp/image-server.pid ]; then
+            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
+            rm -f /tmp/image-server.pid
+          fi
       - name: 📸 Store testing artifacts
         if: always()
         id: upload-artifacts
