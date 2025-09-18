@@ -148,13 +148,6 @@ jobs:
         run: ./scripts/start-ios-e2e-test.ts --test
         working-directory: apps/bare-expo
         timeout-minutes: 30
-      - name: 🛑 Stop image comparison server
-        if: always()
-        run: |
-          if [ -f /tmp/image-server.pid ]; then
-            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
-            rm -f /tmp/image-server.pid
-          fi
       - name: 📸 Store testing artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -178,6 +171,13 @@ jobs:
           channel: '#expo-ios'
           job_name: 'Test Suite e2e (iOS)'
           artifact_url: ${{ steps.upload-artifacts.outputs.artifact-url }}
+      - name: 🛑 Stop image comparison server
+        if: always()
+        run: |
+          if [ -f /tmp/image-server.pid ]; then
+            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
+            rm -f /tmp/image-server.pid
+          fi
 
   #  android-build:
   #    runs-on: ubuntu-24.04
@@ -293,13 +293,6 @@ jobs:
           avd-name: avd-${{ matrix.api-level }}
           script: ./scripts/start-android-e2e-test.ts --test
           working-directory: ./apps/bare-expo
-      - name: 🛑 Stop image comparison server
-        if: always()
-        run: |
-          if [ -f /tmp/image-server.pid ]; then
-            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
-            rm -f /tmp/image-server.pid
-          fi
       - name: 📸 Store testing artifacts
         if: always()
         id: upload-artifacts
@@ -323,3 +316,10 @@ jobs:
           channel: '#expo-android'
           job_name: 'Test Suite e2e (Android)'
           artifact_url: ${{ steps.upload-artifacts.outputs.artifact-url }}
+      - name: 🛑 Stop image comparison server
+        if: always()
+        run: |
+          if [ -f /tmp/image-server.pid ]; then
+            kill $(cat /tmp/image-server.pid) 2>/dev/null || true
+            rm -f /tmp/image-server.pid
+          fi
