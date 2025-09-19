@@ -154,7 +154,6 @@ jobs:
           name: bare-expo-artifacts-ios
           path: |
             ~/.maestro/tests/**/*
-            ~/Library/Logs/maestro/**/*
           overwrite: true
       - name: 🔗 Artifacts download URL
         if: always()
