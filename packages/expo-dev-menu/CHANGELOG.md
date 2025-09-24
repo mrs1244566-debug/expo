@@ -10,6 +10,8 @@
 
 ### 💡 Others
 
+- change debugger connection "warning" to a "tip" ([#39942](https://github.com/expo/expo/pull/39942) by [@vonovak](https://github.com/vonovak))
+
 ## 7.0.11 — 2025-09-11
 
 ### 🐛 Bug fixes
