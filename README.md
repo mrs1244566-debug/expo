@@ -1,127 +1,721 @@
-<!-- Banner Image -->
-
-<p align="center">
-  <a href="https://expo.dev/">
-    <img alt="Expo logo" height="128" src="./.github/resources/banner.png">
-    <h1 align="center">Expo</h1>
-  </a>
-</p>
-
-<p align="center">
-   <a aria-label="SDK version" href="https://www.npmjs.com/package/expo" target="_blank">
-    <img alt="Expo SDK version" src="https://img.shields.io/npm/v/expo.svg?style=flat-square&label=SDK&labelColor=000000&color=4630EB" />
-  </a>
-  <a aria-label="Chat or ask a question" href="https://chat.expo.dev" target="_blank">
-    <img alt="Chat or ask a question" src="https://img.shields.io/discord/695411232856997968.svg?style=flat-square&labelColor=000000&color=4630EB&logo=discord&logoColor=FFFFFF&label=Chat%20with%20us" />
-  </a>
-  <a aria-label="Expo is free to use" href="https://github.com/expo/expo/blob/main/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
-  </a>
-  <a aria-label="expo downloads" href="http://www.npmtrends.com/expo" target="_blank">
-    <img alt="Downloads" src="https://img.shields.io/npm/dm/expo.svg?style=flat-square&labelColor=gray&color=33CC12&label=Downloads" />
-  </a>
-</p>
-
-<p align="center">
-  <a aria-label="try expo with snack" href="https://snack.expo.dev"><b>Try Expo in the Browser</b></a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://docs.expo.dev">Read the Documentation</a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://expo.dev/blog">Learn more on our blog</a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://expo.canny.io/feature-requests">Request a feature</a>
-</p>
-
-<h6 align="center">Follow us on</h6>
-<p align="center">
-  <a aria-label="Follow @expo on X" href="https://x.com/intent/follow?screen_name=expo" target="_blank">
-    <img alt="Expo on X" src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on GitHub" href="https://github.com/expo" target="_blank">
-    <img alt="Expo on GitHub" src="https://img.shields.io/badge/GitHub-222222?style=for-the-badge&logo=github&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on Reddit" href="https://www.reddit.com/r/expo/" target="_blank">
-    <img alt="Expo on Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on Bluesky" href="https://bsky.app/profile/expo.dev" target="_blank">
-    <img alt="Expo on Bluesky" src="https://img.shields.io/badge/Bluesky-1DA1F2?style=for-the-badge&logo=bluesky&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on LinkedIn" href="https://www.linkedin.com/company/expo-dev" target="_blank">
-    <img alt="Expo on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
-  </a>
-</p>
-
-## Introduction
-
-Expo is an open-source platform for making universal native apps that run on Android, iOS, and the web. It includes a universal runtime and libraries that let you build native apps by writing React and JavaScript.
-
-This repository includes the Expo SDK, Modules API, Go app, CLI, Router, documentation, and various other supporting tools. [Expo Application Services (EAS)](https://expo.dev/eas) is a platform of hosted services that are deeply integrated with Expo open source tools. EAS helps you build, ship, and iterate on your app as an individual or a team.
-
-Read the [Expo Community Guidelines](https://expo.dev/guidelines) before interacting in the repository. Thank you for helping keep the Expo community open and welcoming!
-
-## Table of contents
-
-- [📚 Documentation](#-documentation)
-- [🗺 Project Layout](#-project-layout)
-- [🏅 Badges](#-badges)
-- [👏 Contributing](#-contributing)
-- [❓ FAQ](#-faq)
-- [💙 The Team](#-the-team)
-- [License](#license)
-
-## 📚 Documentation
-
-<p>Learn about building and deploying universal apps <a aria-label="expo documentation" href="https://docs.expo.dev">in our official docs!</a></p>
-
-- [Getting Started](https://docs.expo.dev/)
-- [API Reference](https://docs.expo.dev/versions/latest/)
-- [Using Custom Native Modules](https://docs.expo.dev/workflow/customizing/)
-
-## 🗺 Project Layout
-
-- [`packages`](/packages) All the source code for Expo modules, if you want to edit a library or just see how it works this is where you'll find it.
-- [`apps`](/apps) This is where you can find Expo projects which are linked to the development modules. You'll do most of your testing in here.
-- [`apps/expo-go`](/apps/expo-go) This is where you can find the source code for Expo Go.
-- [`apps/expo-go/ios/Exponent.xcworkspace`](/apps/expo-go/ios) is the Xcode workspace. When developing iOS, always open this instead of `Exponent.xcodeproj` because the workspace also loads the CocoaPods dependencies.
-- [`docs`](/docs) The source code for **https://docs.expo.dev**
-- [`templates`](/templates) The template projects you get when you run `npx create-expo-app`
-- [`react-native-lab`](/react-native-lab) This is our fork of `react-native` used to build Expo Go.
-- [`guides`](/guides) In-depth tutorials for advanced topics like contributing to the client.
-- [`tools`](/tools) contain build and configuration tools.
-- [`template-files`](/template-files) contains templates for files that require private keys. They are populated using the keys in `template-files/keys.json`.
-- [`template-files/ios/dependencies.json`](/template-files/ios/dependencies.json) specifies the CocoaPods dependencies of the app.
-
-## 🏅 Badges
-
-Let everyone know your app can be run instantly in the _Expo Go_ app!
-<br/>
-
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
-
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
-
-```md
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
-
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
-```
-
-## 👏 Contributing
-
-If you like Expo and want to help make it better then check out our [contributing guide](/CONTRIBUTING.md)! Check out the [CLI package](https://github.com/expo/expo/tree/main/packages/%40expo/cli) to work on the Expo CLI.
-
-## ❓ FAQ
-
-If you have questions about Expo and want answers, then check out our [Frequently Asked Questions](https://docs.expo.dev/faq/)!
-
-If you still have questions you can ask them on our [Discord and Forums](https://chat.expo.dev) or X [@expo](https://x.com/expo).
-
-## 💙 The Team
-
-Curious about who makes Expo? Here are our [team members](https://expo.dev/about)!
-
-## License
-
-The Expo source code is made available under the [MIT license](LICENSE). Some of the dependencies are licensed differently, with the BSD license, for example.
-
-<img alt="Star the Expo repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الإرساليات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .login-container, .dashboard {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #555;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .user-type-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .user-type-btn {
+            padding: 15px 30px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .user-type-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .user-type-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
+        .btn-secondary {
+            background: #48bb78;
+        }
+        
+        .btn-secondary:hover {
+            background: #38a169;
+        }
+        
+        .btn-danger {
+            background: #f56565;
+        }
+        
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #f56565;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background: #f5f7fa;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .status-assigned {
+            background: #feebc8;
+            color: #c05621;
+        }
+        
+        .status-completed {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .lab-status {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .status-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .status-working {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .status-not-working {
+            background: #f56565;
+            color: white;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .alert-error {
+            background: #fed7d7;
+            color: #c53030;
+            border: 1px solid #fc8181;
+        }
+        
+        .user-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- شاشة الدخول -->
+        <div id="loginPage" class="login-container">
+            <h1><i class="fas fa-shipping-fast"></i> نظام إدارة الإرساليات</h1>
+            
+            <div class="user-type-selector">
+                <button class="user-type-btn active" onclick="selectUserType('clearance')">
+                    <i class="fas fa-building"></i> مكتب التخليص
+                </button>
+                <button class="user-type-btn" onclick="selectUserType('employee')">
+                    <i class="fas fa-users"></i> موظف
+                </button>
+                <button class="user-type-btn" onclick="selectUserType('lab')">
+                    <i class="fas fa-flask"></i> مختبر
+                </button>
+            </div>
+            
+            <div id="alertMessage" class="alert hidden"></div>
+            
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                    <input type="text" id="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <input type="hidden" id="userType" value="clearance">
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> دخول
+                </button>
+            </form>
+        </div>
+        
+        <!-- لوحة التحكم -->
+        <div id="dashboard" class="dashboard hidden">
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> خروج
+            </button>
+            
+            <div id="userInfo" class="user-info"></div>
+            
+            <div class="tabs" id="tabsContainer"></div>
+            
+            <!-- محتوى الألسنة -->
+            <div id="tabContents">
+                <!-- محتوى سيتم تعبئته ديناميكياً -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // تحديد نوع المستخدم
+        function selectUserType(type) {
+            document.getElementById('userType').value = type;
+            
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // تسجيل الدخول
+        function login(event) {
+            event.preventDefault();
+            
+            const userType = document.getElementById('userType').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            google.script.run
+                .withSuccessHandler(handleLoginSuccess)
+                .withFailureHandler(handleLoginError)
+                .authenticate(userType, username, password);
+        }
+        
+        // معالجة نجاح الدخول
+        function handleLoginSuccess(response) {
+            if (response.authenticated) {
+                // حفظ بيانات المستخدم
+                sessionStorage.setItem('userType', response.userType);
+                sessionStorage.setItem('username', response.username);
+                sessionStorage.setItem('name', response.name);
+                
+                // إظهار لوحة التحكم
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                
+                // تحميل لوحة التحكم المناسبة
+                loadDashboard(response.userType);
+            } else {
+                showAlert(response.message, 'error');
+            }
+        }
+        
+        // معالجة خطأ الدخول
+        function handleLoginError(error) {
+            showAlert('حدث خطأ في الاتصال', 'error');
+            console.error(error);
+        }
+        
+        // تحميل لوحة التحكم حسب نوع المستخدم
+        function loadDashboard(userType) {
+            const userInfo = document.getElementById('userInfo');
+            const name = sessionStorage.getItem('name');
+            const username = sessionStorage.getItem('username');
+            
+            userInfo.innerHTML = `
+                <div>
+                    <h3>مرحباً ${name}</h3>
+                    <p>اسم المستخدم: ${username}</p>
+                </div>
+                <div>
+                    <span class="status-badge ${userType === 'clearance' ? 'status-pending' : userType === 'employee' ? 'status-assigned' : 'status-completed'}">
+                        ${userType === 'clearance' ? 'مكتب تخليص' : userType === 'employee' ? 'موظف' : 'مختبر'}
+                    </span>
+                </div>
+            `;
+            
+            const tabsContainer = document.getElementById('tabsContainer');
+            const tabContents = document.getElementById('tabContents');
+            
+            // إنشاء الألسنة حسب نوع المستخدم
+            if (userType === 'clearance') {
+                tabsContainer.innerHTML = `
+                    <div class="tab active" onclick="showTab('register')">تسجيل إرسالية</div>
+                    <div class="tab" onclick="showTab('myShipments')">إرسالياتي</div>
+                `;
+                
+                tabContents.innerHTML = `
+                    <div id="registerTab" class="tab-content active">
+                        <h2><i class="fas fa-plus-circle"></i> تسجيل إرسالية جديدة</h2>
+                        <form id="shipmentForm" onsubmit="addShipment(event)">
+                            <div class="form-group">
+                                <label>اسم المصدر</label>
+                                <input type="text" id="source" required>
+                            </div>
+                            <div class="form-group">
+                                <label>اسم المستورد</label>
+                                <input type="text" id="importer" required>
+                            </div>
+                            <div class="form-group">
+                                <label>الناقل</label>
+                                <input type="text" id="carrier" required>
+                            </div>
+                            <div class="form-group">
+                                <label>رقم السيارة</label>
+                                <input type="text" id="carNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label>رقم الهاتف</label>
+                                <input type="text" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>الأصناف</label>
+                                <textarea id="items" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">
+                                <i class="fas fa-save"></i> تسجيل الإرسالية
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div id="myShipmentsTab" class="tab-content">
+                        <h2><i class="fas fa-list"></i> الإرساليات المسجلة</h2>
+                        <button class="btn btn-secondary" onclick="loadMyShipments()">
+                            <i class="fas fa-sync"></i> تحديث القائمة
+                        </button>
+                        <div id="shipmentsList"></div>
+                    </div>
+                `;
+                
+            } else if (userType === 'employee') {
+                tabsContainer.innerHTML = `
+                    <div class="tab active" onclick="showTab('allShipments')">جميع الإرساليات</div>
+                    <div class="tab" onclick="showTab('distribute')">توزيع الإرساليات</div>
+                `;
+                
+                tabContents.innerHTML = `
+                    <div id="allShipmentsTab" class="tab-content active">
+                        <h2><i class="fas fa-list-alt"></i> جميع الإرساليات</h2>
+                        <button class="btn btn-secondary" onclick="loadAllShipments()">
+                            <i class="fas fa-sync"></i> تحديث القائمة
+                        </button>
+                        <div id="allShipmentsList"></div>
+                    </div>
+                    
+                    <div id="distributeTab" class="tab-content">
+                        <h2><i class="fas fa-random"></i> توزيع الإرساليات على المختبرات</h2>
+                        <p>سيتم توزيع الإرساليات المعلقة على المختبرات العاملة بشكل متوازن</p>
+                        <button class="btn btn-secondary" onclick="distributeShipments()">
+                            <i class="fas fa-share-alt"></i> توزيع الإرساليات
+                        </button>
+                        <div id="distributionResult"></div>
+                    </div>
+                `;
+                
+                // تحميل الإرساليات تلقائياً
+                loadAllShipments();
+                
+            } else if (userType === 'lab') {
+                tabsContainer.innerHTML = `
+                    <div class="tab active" onclick="showTab('labStatus')">حالة المختبر</div>
+                    <div class="tab" onclick="showTab('assignedShipments')">الإرساليات المسندة</div>
+                `;
+                
+                tabContents.innerHTML = `
+                    <div id="labStatusTab" class="tab-content active">
+                        <h2><i class="fas fa-flask"></i> حالة المختبر</h2>
+                        <p>اسم المختبر: ${name}</p>
+                        <div class="lab-status">
+                            <button class="status-btn status-working" onclick="updateLabStatus('يعمل')">
+                                <i class="fas fa-check-circle"></i> يعمل
+                            </button>
+                            <button class="status-btn status-not-working" onclick="updateLabStatus('لا يعمل')">
+                                <i class="fas fa-times-circle"></i> لا يعمل
+                            </button>
+                        </div>
+                        <div id="labStatusMessage"></div>
+                    </div>
+                    
+                    <div id="assignedShipmentsTab" class="tab-content">
+                        <h2><i class="fas fa-tasks"></i> الإرساليات المسندة إلي</h2>
+                        <button class="btn btn-secondary" onclick="loadAssignedShipments()">
+                            <i class="fas fa-sync"></i> تحديث القائمة
+                        </button>
+                        <div id="assignedShipmentsList"></div>
+                    </div>
+                `;
+                
+                // تحميل الإرساليات المسندة تلقائياً
+                loadAssignedShipments();
+            }
+        }
+        
+        // إظهار اللسان المحدد
+        function showTab(tabName) {
+            // تحديث الألسنة النشطة
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // إظهار المحتوى المناسب
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+        
+        // تسجيل إرسالية جديدة (لمكاتب التخليص)
+        function addShipment(event) {
+            event.preventDefault();
+            
+            const shipmentData = {
+                المصدر: document.getElementById('source').value,
+                المستورد: document.getElementById('importer').value,
+                الناقل: document.getElementById('carrier').value,
+                رقم_السيارة: document.getElementById('carNumber').value,
+                رقم_الهاتف: document.getElementById('phone').value,
+                الأصناف: document.getElementById('items').value
+            };
+            
+            const userType = sessionStorage.getItem('userType');
+            const username = sessionStorage.getItem('username');
+            
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    showAlert(response.message, response.success ? 'success' : 'error');
+                    if (response.success) {
+                        document.getElementById('shipmentForm').reset();
+                    }
+                })
+                .withFailureHandler(handleError)
+                .addShipment(shipmentData, userType, username);
+        }
+        
+        // تحديث حالة المختبر
+        function updateLabStatus(status) {
+            const labName = sessionStorage.getItem('name');
+            const username = sessionStorage.getItem('username');
+            
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    const messageDiv = document.getElementById('labStatusMessage');
+                    messageDiv.className = `alert alert-${response.success ? 'success' : 'error'}`;
+                    messageDiv.textContent = response.message;
+                    messageDiv.classList.remove('hidden');
+                })
+                .withFailureHandler(handleError)
+                .updateLabStatus(labName, status, username);
+        }
+        
+        // توزيع الإرساليات على المختبرات (للموظفين)
+        function distributeShipments() {
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    const resultDiv = document.getElementById('distributionResult');
+                    resultDiv.className = `alert alert-${response.success ? 'success' : 'error'}`;
+                    resultDiv.textContent = response.message;
+                    resultDiv.classList.remove('hidden');
+                    
+                    // تحديث قائمة الإرساليات
+                    if (response.success) {
+                        loadAllShipments();
+                    }
+                })
+                .withFailureHandler(handleError)
+                .distributeShipmentsToLabs();
+        }
+        
+        // تحميل الإرساليات الخاصة بمكتب التخليص
+        function loadMyShipments() {
+            const userType = sessionStorage.getItem('userType');
+            const username = sessionStorage.getItem('username');
+            
+            google.script.run
+                .withSuccessHandler(displayShipments)
+                .withFailureHandler(handleError)
+                .getUserShipments(userType, username);
+        }
+        
+        // تحميل جميع الإرساليات (للموظفين)
+        function loadAllShipments() {
+            const userType = sessionStorage.getItem('userType');
+            const username = sessionStorage.getItem('username');
+            
+            google.script.run
+                .withSuccessHandler(function(shipments) {
+                    const container = document.getElementById('allShipmentsList');
+                    
+                    if (shipments.length === 0) {
+                        container.innerHTML = '<div class="alert">لا توجد إرساليات</div>';
+                        return;
+                    }
+                    
+                    let html = '<table><tr><th>المصدر</th><th>المستورد</th><th>الناقل</th><th>رقم السيارة</th><th>حالة</th><th>المختبر المسند</th><th>وقت التسجيل</th></tr>';
+                    
+                    shipments.forEach(shipment => {
+                        html += `
+                            <tr>
+                                <td>${shipment.المصدر || ''}</td>
+                                <td>${shipment.المستورد || ''}</td>
+                                <td>${shipment.الناقل || ''}</td>
+                                <td>${shipment.رقم_السيارة || ''}</td>
+                                <td><span class="status-badge ${shipment.status === 'مسند' ? 'status-assigned' : 'status-pending'}">${shipment.status || 'معلقة'}</span></td>
+                                <td>${shipment.المختبر_المسند || 'لم يتم التوزيع'}</td>
+                                <td>${shipment.timestamp || ''}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    html += '</table>';
+                    container.innerHTML = html;
+                })
+                .withFailureHandler(handleError)
+                .getUserShipments('employee', username);
+        }
+        
+        // تحميل الإرساليات المسندة للمختبر
+        function loadAssignedShipments() {
+            const userType = sessionStorage.getItem('userType');
+            const username = sessionStorage.getItem('username');
+            
+            google.script.run
+                .withSuccessHandler(displayShipments)
+                .withFailureHandler(handleError)
+                .getUserShipments(userType, username);
+        }
+        
+        // عرض الإرساليات في جدول
+        function displayShipments(shipments) {
+            let container;
+            const userType = sessionStorage.getItem('userType');
+            
+            if (userType === 'clearance') {
+                container = document.getElementById('shipmentsList');
+            } else if (userType === 'lab') {
+                container = document.getElementById('assignedShipmentsList');
+            }
+            
+            if (!container) return;
+            
+            if (shipments.length === 0) {
+                container.innerHTML = '<div class="alert">لا توجد إرساليات</div>';
+                return;
+            }
+            
+            let html = '<table><tr><th>المصدر</th><th>المستورد</th><th>الناقل</th><th>رقم السيارة</th><th>رقم الهاتف</th><th>الأصناف</th><th>وقت التسجيل</th></tr>';
+            
+            shipments.forEach(shipment => {
+                html += `
+                    <tr>
+                        <td>${shipment.المصدر || ''}</td>
+                        <td>${shipment.المستورد || ''}</td>
+                        <td>${shipment.الناقل || ''}</td>
+                        <td>${shipment.رقم_السيارة || ''}</td>
+                        <td>${shipment.رقم_الهاتف || ''}</td>
+                        <td>${shipment.الأصناف || ''}</td>
+                        <td>${shipment.timestamp || ''}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</table>';
+            container.innerHTML = html;
+        }
+        
+        // تسجيل الخروج
+        function logout() {
+            sessionStorage.clear();
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('loginForm').reset();
+            document.getElementById('alertMessage').classList.add('hidden');
+        }
+        
+        // عرض رسالة تنبيه
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('alertMessage');
+            alertDiv.textContent = message;
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                alertDiv.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // معالجة الأخطاء العامة
+        function handleError(error) {
+            console.error(error);
+            showAlert('حدث خطأ في النظام', 'error');
+        }
+        
+        // تهيئة الصفحة
+        window.onload = function() {
+            // إعادة تعيين حالة المستخدم
+            sessionStorage.clear();
+        };
+    </script>
+</body>
+</html>
