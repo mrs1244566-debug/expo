@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, select { width: 100%; padding: 10px; margin: 8px 0; }
+    button { padding: 12px; width: 100%; }
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body>
+
+<h2>تسجيل الدخول</h2>
+
+<select id="type">
+  <option value="clearance">مكتب تخليص</option>
+  <option value="employee">موظف</option>
+  <option value="lab">مختبر</option>
+</select>
+
+<input id="user" type="text" placeholder="اسم المستخدم">
+<input id="pass" type="password" placeholder="كلمة المرور">
+
+<button onclick="login()">دخول</button>
+
+<div id="form" class="hidden">
+  <h3>إدخال معلومات الإرسالية</h3>
+
+  <input id="supplier" placeholder="اسم المصدر">
+  <input id="importer" placeholder="اسم المستورد">
+  <input id="carrier" placeholder="اسم الناقل">
+  <input id="carNum" placeholder="رقم السيارة">
+  <textarea id="items" placeholder="الأصناف مع الوزن"></textarea>
+
+  <button onclick="save()">حفظ الإرسالية</button>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+    const type = document.getElementById("type").value;
+
+    google.script.run.withSuccessHandler(function(result){
+      if (result.success) {
+        alert("مرحباً " + result.name);
+        document.getElementById("form").classList.remove("hidden");
+      } else {
+        alert("اسم المستخدم أو كلمة المرور غير صحيحة");
+      }
+    }).login(user, pass, type);
+  }
+
+  function save() {
+    const info = {
+      supplier: document.getElementById("supplier").value,
+      importer: document.getElementById("importer").value,
+      carrier: document.getElementById("carrier").value,
+      carNum: document.getElementById("carNum").value,
+      items: document.getElementById("items").value
+    };
+
+    google.script.run.withSuccessHandler(function(){
+      alert("تم حفظ الإرسالية بنجاح");
+    }).saveShipment(info);
+  }
+</script>
+
+</body>
+</html>
